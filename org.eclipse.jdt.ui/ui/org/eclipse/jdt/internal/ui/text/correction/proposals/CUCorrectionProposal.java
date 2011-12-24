@@ -63,7 +63,6 @@ public class CUCorrectionProposal extends ChangeCorrectionProposal  {
 	private ICompilationUnit fCompilationUnit;
 	private boolean fSwitchedEditor;
 
-
 	/**
 	 * Constructs a correction proposal working on a compilation unit with a given text change
 	 *
@@ -177,17 +176,6 @@ public class CUCorrectionProposal extends ChangeCorrectionProposal  {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jdt.internal.ui.text.correction.ChangeCorrectionProposal#performChange(org.eclipse.jface.text.IDocument, org.eclipse.ui.IEditorPart)
-	 */
-	@Override
-	protected void performChange(IEditorPart part, IDocument document) throws CoreException {
-		super.performChange(part, document);
-		if (part == null) {
-			return;
-		}
-	}
-
 	/**
 	 * Creates the text change for this proposal.
 	 * This method is only called once and only when no text change has been passed in
@@ -275,6 +263,13 @@ public class CUCorrectionProposal extends ChangeCorrectionProposal  {
 		return super.toString();
 	}
 
+	/**
+	 * Returns whether the changed compilation unit was previously open in an editor or not.
+	 * 
+	 * @return <code>true</code> if the changed compilation unit was not previously open in an
+	 *         editor, <code>false</code> if the changed compilation unit was already open in an
+	 *         editor
+	 */
 	protected boolean isSwitchedEditor() {
 		return fSwitchedEditor;
 	}
