@@ -44,6 +44,7 @@ import org.eclipse.jdt.internal.corext.util.Resources;
 import org.eclipse.jdt.ui.JavaUI;
 
 import org.eclipse.jdt.internal.ui.JavaPlugin;
+import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.javaeditor.EditorUtility;
 import org.eclipse.jdt.internal.ui.text.correction.CorrectionMessages;
 import org.eclipse.jdt.internal.ui.util.ExceptionHandler;
@@ -81,6 +82,21 @@ public class CUCorrectionProposal extends ChangeCorrectionProposal  {
 			throw new IllegalArgumentException("Compilation unit must not be null"); //$NON-NLS-1$
 		}
 		fCompilationUnit= cu;
+	}
+
+	/**
+	 * Constructs a correction proposal working on a compilation unit with a given text change. Uses
+	 * the default image for this proposal.
+	 * 
+	 * @param name the name that is displayed in the proposal selection dialog.
+	 * @param cu the compilation unit on that the change works.
+	 * @param change the change that is executed when the proposal is applied or <code>null</code>
+	 *            if implementors override {@link #addEdits(IDocument, TextEdit)} to provide the
+	 *            text edits or {@link #createTextChange()} to provide a text change.
+	 * @param relevance the relevance of this proposal.
+	 */
+	public CUCorrectionProposal(String name, ICompilationUnit cu, TextChange change, int relevance) {
+		this(name, cu, change, relevance, JavaPluginImages.get(JavaPluginImages.IMG_CORRECTION_CHANGE));
 	}
 
 	/**

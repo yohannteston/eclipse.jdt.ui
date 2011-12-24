@@ -27,6 +27,7 @@ import org.eclipse.jdt.core.dom.rewrite.ImportRewrite;
 
 import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility;
 
+import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.JavaUIStatus;
 
 /**
@@ -56,6 +57,19 @@ public class ASTRewriteCorrectionProposal extends CUCorrectionProposal {
 	public ASTRewriteCorrectionProposal(String name, ICompilationUnit cu, ASTRewrite rewrite, int relevance, Image image) {
 		super(name, cu, relevance, image);
 		fRewrite= rewrite;
+	}
+
+	/**
+	 * Constructs a AST rewrite correction proposal. Uses the default image for this proposal.
+	 * 
+	 * @param name the display name of the proposal.
+	 * @param cu the compilation unit that is modified.
+	 * @param rewrite the AST rewrite that is invoked when the proposal is applied or
+	 *            <code>null</code> if {@link #getRewrite()} is overridden.
+	 * @param relevance The relevance of this proposal.
+	 */
+	public ASTRewriteCorrectionProposal(String name, ICompilationUnit cu, ASTRewrite rewrite, int relevance) {
+		this(name, cu, rewrite, relevance, JavaPluginImages.get(JavaPluginImages.IMG_CORRECTION_CHANGE));
 	}
 
 	/**
