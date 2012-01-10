@@ -551,6 +551,7 @@ public final class NewWizardMessages extends NLS {
 	public static String CPListLabelProvider_exclusion_filter_separator;
 	public static String CPListLabelProvider_inclusion_filter_label;
 	public static String CPListLabelProvider_inclusion_filter_separator;
+	public static String CPListLabelProvider_index_location_label;
 	public static String CPListLabelProvider_unknown_element_label;
 	public static String CPListLabelProvider_access_rules_enabled_singular;
 	public static String CPListLabelProvider_access_rules_enabled_plural;

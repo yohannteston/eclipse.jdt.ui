@@ -167,6 +167,10 @@
             class="org.eclipse.jdt.internal.ui.wizards.buildpaths.JavadocAttributeConfiguration">
       </classpathAttributeConfiguration>
       <classpathAttributeConfiguration
+      		attributeName="index_location"
+            class="org.eclipse.jdt.internal.ui.wizards.buildpaths.IndexAttributeConfiguration">
+      </classpathAttributeConfiguration>
+      <classpathAttributeConfiguration
       		attributeName="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY"
             class="org.eclipse.jdt.internal.ui.wizards.buildpaths.NativeLibAttributeConfiguration">
       </classpathAttributeConfiguration>      
@@ -886,6 +890,19 @@
              <adapt type="org.eclipse.core.resources.IProject">
                <test property="org.eclipse.core.resources.projectNature" value="org.eclipse.jdt.core.javanature"/>
 		     </adapt>
+         </enabledWhen>
+      </page>
+            <page
+            name="%indexPageName"
+            class="org.eclipse.jdt.internal.ui.preferences.IndexConfigurationPropertyPage"
+            id="org.eclipse.jdt.ui.propertyPages.IndexPage">
+         <enabledWhen>
+            <and>
+              <instanceof value="org.eclipse.jdt.core.IPackageFragmentRoot"/>
+              <not>
+                <test property="org.eclipse.jdt.core.inSourceFolder"/>
+              </not>
+            </and>
          </enabledWhen>
       </page>
       <page
