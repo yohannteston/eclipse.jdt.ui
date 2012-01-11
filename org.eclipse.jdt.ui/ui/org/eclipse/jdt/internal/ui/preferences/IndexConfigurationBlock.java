@@ -19,7 +19,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipFile;
 
@@ -89,7 +88,7 @@ public class IndexConfigurationBlock {
 	private URL fInitialURL;
 	private SelectionButtonDialogField fValidateURLButton;
 	private SelectionButtonDialogField fValidateArchiveButton;
-	private SelectionButtonDialogField fBrowseFolder;
+	private SelectionButtonDialogField fBrowseFile;
 	private SelectionButtonDialogField fURLRadioButton;
 	private SelectionButtonDialogField fArchiveRadioButton;
 	private SelectionButtonDialogField fBrowseArchive;
@@ -105,68 +104,60 @@ public class IndexConfigurationBlock {
 	private URL fURLResult;
 	private URL fArchiveURLResult;
 
-	boolean fIsForSource;
-
-
-	public IndexConfigurationBlock(Shell shell,  IStatusChangeListener context, URL initURL, boolean forSource) {
+	public IndexConfigurationBlock(Shell shell, IStatusChangeListener context, URL initURL) {
 		fShell= shell;
 		fContext= context;
 		fInitialURL= initURL;
-		fIsForSource= forSource;
 
 		JDocConfigurationAdapter adapter= new JDocConfigurationAdapter();
 
-		if (!forSource) {
-			fURLRadioButton= new SelectionButtonDialogField(SWT.RADIO);
-			fURLRadioButton.setDialogFieldListener(adapter);
-			fURLRadioButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_type_path_label);
-		}
+		fURLRadioButton= new SelectionButtonDialogField(SWT.RADIO);
+		fURLRadioButton.setDialogFieldListener(adapter);
+		fURLRadioButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_type_path_label);
 
 		fURLField= new StringDialogField();
 		fURLField.setDialogFieldListener(adapter);
-		fURLField.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_path_label);
+		fURLField.setLabelText(PreferencesMessages.IndexConfigurationBlock_file_path_label);
 
-		fBrowseFolder= new SelectionButtonDialogField(SWT.PUSH);
-		fBrowseFolder.setDialogFieldListener(adapter);
-		fBrowseFolder.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_folder_button);
+		fBrowseFile= new SelectionButtonDialogField(SWT.PUSH);
+		fBrowseFile.setDialogFieldListener(adapter);
+		fBrowseFile.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_file_button);
 
 		fValidateURLButton= new SelectionButtonDialogField(SWT.PUSH);
 		fValidateURLButton.setDialogFieldListener(adapter);
 		fValidateURLButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_validate_button);
 
-		if (!forSource) {
-			fArchiveRadioButton= new SelectionButtonDialogField(SWT.RADIO);
-			fArchiveRadioButton.setDialogFieldListener(adapter);
-			fArchiveRadioButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_type_jar_label);
+		fArchiveRadioButton= new SelectionButtonDialogField(SWT.RADIO);
+		fArchiveRadioButton.setDialogFieldListener(adapter);
+		fArchiveRadioButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_type_jar_label);
 
-			fExternalRadio= new SelectionButtonDialogField(SWT.RADIO);
-			fExternalRadio.setDialogFieldListener(adapter);
-			fExternalRadio.setLabelText(PreferencesMessages.IndexConfigurationBlock_external_radio);
+		fExternalRadio= new SelectionButtonDialogField(SWT.RADIO);
+		fExternalRadio.setDialogFieldListener(adapter);
+		fExternalRadio.setLabelText(PreferencesMessages.IndexConfigurationBlock_external_radio);
 
-			fWorkspaceRadio= new SelectionButtonDialogField(SWT.RADIO);
-			fWorkspaceRadio.setDialogFieldListener(adapter);
-			fWorkspaceRadio.setLabelText(PreferencesMessages.IndexConfigurationBlock_workspace_radio);
+		fWorkspaceRadio= new SelectionButtonDialogField(SWT.RADIO);
+		fWorkspaceRadio.setDialogFieldListener(adapter);
+		fWorkspaceRadio.setLabelText(PreferencesMessages.IndexConfigurationBlock_workspace_radio);
 
-			fArchiveField= new StringDialogField();
-			fArchiveField.setDialogFieldListener(adapter);
-			fArchiveField.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_jar_label);
+		fArchiveField= new StringDialogField();
+		fArchiveField.setDialogFieldListener(adapter);
+		fArchiveField.setLabelText(PreferencesMessages.IndexConfigurationBlock_location_jar_label);
 
-			fBrowseArchive= new SelectionButtonDialogField(SWT.PUSH);
-			fBrowseArchive.setDialogFieldListener(adapter);
-			fBrowseArchive.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_archive_button);
+		fBrowseArchive= new SelectionButtonDialogField(SWT.PUSH);
+		fBrowseArchive.setDialogFieldListener(adapter);
+		fBrowseArchive.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_archive_button);
 
-			fArchivePathField= new StringDialogField();
-			fArchivePathField.setDialogFieldListener(adapter);
-			fArchivePathField.setLabelText(PreferencesMessages.IndexConfigurationBlock_jar_path_label);
+		fArchivePathField= new StringDialogField();
+		fArchivePathField.setDialogFieldListener(adapter);
+		fArchivePathField.setLabelText(PreferencesMessages.IndexConfigurationBlock_jar_path_label);
 
-			fBrowseArchivePath= new SelectionButtonDialogField(SWT.PUSH);
-			fBrowseArchivePath.setDialogFieldListener(adapter);
-			fBrowseArchivePath.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_archive_path_button);
+		fBrowseArchivePath= new SelectionButtonDialogField(SWT.PUSH);
+		fBrowseArchivePath.setDialogFieldListener(adapter);
+		fBrowseArchivePath.setLabelText(PreferencesMessages.IndexConfigurationBlock_browse_archive_path_button);
 
-			fValidateArchiveButton= new SelectionButtonDialogField(SWT.PUSH);
-			fValidateArchiveButton.setDialogFieldListener(adapter);
-			fValidateArchiveButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_validate_button);
-		}
+		fValidateArchiveButton= new SelectionButtonDialogField(SWT.PUSH);
+		fValidateArchiveButton.setDialogFieldListener(adapter);
+		fValidateArchiveButton.setLabelText(PreferencesMessages.IndexConfigurationBlock_validate_button);
 
 		fURLStatus= new StatusInfo();
 		fArchiveStatus= new StatusInfo();
@@ -187,64 +178,58 @@ public class IndexConfigurationBlock {
 		topComp.setLayout(topLayout);
 
 		// Add the first radio button for the path
-		if (!fIsForSource) {
-			fURLRadioButton.doFillIntoGrid(topComp, 3);
-		}
+		fURLRadioButton.doFillIntoGrid(topComp, 3);
 
 		fURLField.doFillIntoGrid(topComp, 2);
 		LayoutUtil.setWidthHint(fURLField.getTextControl(null), converter.convertWidthInCharsToPixels(43));
 		LayoutUtil.setHorizontalGrabbing(fURLField.getTextControl(null));
 
-		fBrowseFolder.doFillIntoGrid(topComp, 1);
+		fBrowseFile.doFillIntoGrid(topComp, 1);
 
 		DialogField.createEmptySpace(topComp, 2);
 		fValidateURLButton.doFillIntoGrid(topComp, 1);
 
 		//DialogField.createEmptySpace(topComp, 3);
 
-		if (!fIsForSource) {
-			// Add the second radio button for the jar/zip
-			fArchiveRadioButton.doFillIntoGrid(topComp, 3);
+		// Add the second radio button for the jar/zip
+		fArchiveRadioButton.doFillIntoGrid(topComp, 3);
 
+		// external - workspace selection
+		DialogField.createEmptySpace(topComp, 1);
+		Composite radioComposite= new Composite(topComp, SWT.NONE);
+		radioComposite.setLayoutData(new GridData(GridData.FILL, GridData.FILL, false, false));
+		GridLayout layout= new GridLayout(2, true);
+		layout.marginHeight= 0;
+		layout.marginWidth= 0;
+		radioComposite.setLayout(layout);
+		fExternalRadio.doFillIntoGrid(radioComposite, 1);
+		fWorkspaceRadio.doFillIntoGrid(radioComposite, 1);
+		DialogField.createEmptySpace(topComp, 1);
 
-			// external - workspace selection
-			DialogField.createEmptySpace(topComp, 1);
-			Composite radioComposite= new Composite(topComp, SWT.NONE);
-			radioComposite.setLayoutData(new GridData(GridData.FILL, GridData.FILL, false, false));
-			GridLayout layout= new GridLayout(2, true);
-			layout.marginHeight= 0;
-			layout.marginWidth= 0;
-			radioComposite.setLayout(layout);
-			fExternalRadio.doFillIntoGrid(radioComposite, 1);
-			fWorkspaceRadio.doFillIntoGrid(radioComposite, 1);
-			DialogField.createEmptySpace(topComp, 1);
+		// Add the jar/zip field
+		fArchiveField.doFillIntoGrid(topComp, 2);
+		LayoutUtil.setWidthHint(fArchiveField.getTextControl(null), converter.convertWidthInCharsToPixels(43));
+		LayoutUtil.setHorizontalGrabbing(fArchiveField.getTextControl(null));
 
-			// Add the jar/zip field
-			fArchiveField.doFillIntoGrid(topComp, 2);
-			LayoutUtil.setWidthHint(fArchiveField.getTextControl(null), converter.convertWidthInCharsToPixels(43));
-			LayoutUtil.setHorizontalGrabbing(fArchiveField.getTextControl(null));
+		fBrowseArchive.doFillIntoGrid(topComp, 1);
 
-			fBrowseArchive.doFillIntoGrid(topComp, 1);
+		// Add the path chooser for the jar/zip
+		fArchivePathField.doFillIntoGrid(topComp, 2);
+		LayoutUtil.setWidthHint(fArchivePathField.getTextControl(null), converter.convertWidthInCharsToPixels(43));
+		LayoutUtil.setHorizontalGrabbing(fArchivePathField.getTextControl(null));
 
-			// Add the path chooser for the jar/zip
-			fArchivePathField.doFillIntoGrid(topComp, 2);
-			LayoutUtil.setWidthHint(fArchivePathField.getTextControl(null), converter.convertWidthInCharsToPixels(43));
-			LayoutUtil.setHorizontalGrabbing(fArchivePathField.getTextControl(null));
+		fBrowseArchivePath.doFillIntoGrid(topComp, 1);
 
-			fBrowseArchivePath.doFillIntoGrid(topComp, 1);
+		DialogField.createEmptySpace(topComp, 2);
+		fValidateArchiveButton.doFillIntoGrid(topComp, 1);
 
-			DialogField.createEmptySpace(topComp, 2);
-			fValidateArchiveButton.doFillIntoGrid(topComp, 1);
+		int indent= converter.convertWidthInCharsToPixels(2);
+		LayoutUtil.setHorizontalIndent(fArchiveField.getLabelControl(null), indent);
+		LayoutUtil.setHorizontalIndent(fArchivePathField.getLabelControl(null), indent);
+		LayoutUtil.setHorizontalIndent(fURLField.getLabelControl(null), indent);
 
-			int indent= converter.convertWidthInCharsToPixels(2);
-			LayoutUtil.setHorizontalIndent(fArchiveField.getLabelControl(null), indent);
-			LayoutUtil.setHorizontalIndent(fArchivePathField.getLabelControl(null), indent);
-			LayoutUtil.setHorizontalIndent(fURLField.getLabelControl(null), indent);
-
-			fURLRadioButton.attachDialogFields(new DialogField[] {fURLField,  fBrowseFolder, fValidateURLButton });
-			fArchiveRadioButton.attachDialogFields(new DialogField[] {fArchiveField,  fBrowseArchive, fExternalRadio, fWorkspaceRadio, fArchivePathField, fBrowseArchivePath, fValidateArchiveButton });
-		}
-
+		fURLRadioButton.attachDialogFields(new DialogField[] { fURLField, fBrowseFile, fValidateURLButton });
+		fArchiveRadioButton.attachDialogFields(new DialogField[] { fArchiveField, fBrowseArchive, fExternalRadio, fWorkspaceRadio, fArchivePathField, fBrowseArchivePath, fValidateArchiveButton });
 
 		return topComp;
 	}
@@ -252,10 +237,6 @@ public class IndexConfigurationBlock {
 	private void initializeSelections() {
 		String initialValue = fInitialURL != null ? fInitialURL.toExternalForm() : ""; //$NON-NLS-1$
 
-		if (fIsForSource) {
-			fURLField.setText(initialValue);
-			return;
-		}
 		String prefix= JavaDocLocations.ARCHIVE_PREFIX;
 		boolean isArchive= initialValue.startsWith(prefix);
 
@@ -311,7 +292,7 @@ public class IndexConfigurationBlock {
 	}
 
 	public URL getIndexLocation() {
-		if (fIsForSource || fURLRadioButton.isSelected()) {
+		if (fURLRadioButton.isSelected()) {
 			return fURLResult;
 		}
 		return fArchiveURLResult;
@@ -319,11 +300,11 @@ public class IndexConfigurationBlock {
 
 	private class EntryValidator implements Runnable {
 
-		private String fInvalidMessage= PreferencesMessages.IndexConfigurationBlock_InvalidLocation_message;
+		private String fInvalidMessage= PreferencesMessages.IndexConfigurationBlock_InvalidIndex_message;
 
 		private String fTitle= PreferencesMessages.IndexConfigurationBlock_MessageDialog_title;
 
-		private String fUnable= PreferencesMessages.IndexConfigurationBlock_UnableToValidateLocation_message;
+		private String fUnable= PreferencesMessages.IndexConfigurationBlock_UnableToValidateIndex_message;
 
 		public void run() {
 
@@ -354,29 +335,21 @@ public class IndexConfigurationBlock {
 			OpenBrowserUtil.openExternal(url, fShell.getDisplay());
 		}
 
-		private void validateFile(URL location) throws MalformedURLException {
-			File folder = new File(location.getFile());
-			if (folder.isDirectory()) {
-				File indexFile= new File(folder, "index.html"); //$NON-NLS-1$
-				if (indexFile.isFile()) {
-					File packageList= new File(folder, "package-list"); //$NON-NLS-1$
-					if (packageList.exists()) {
-						showConfirmValidationDialog(indexFile.toURL());
-						return;
-					}
-				}
+		private void validateFile(URL location) {
+			File file= new File(location.getFile());
+			if (file.isFile()) {
+				showConfirmValidationDialog(location);
+				return;
 			}
 			MessageDialog.openWarning(fShell, fTitle, fInvalidMessage);
 		}
 
 		private void validateURL(URL location) throws MalformedURLException, URISyntaxException {
 			URI path= URIUtil.toURI(location);
-			URI index = URIUtil.append(path, "index.html"); //$NON-NLS-1$
-			URI packagelist = URIUtil.append(path, "package-list"); //$NON-NLS-1$
+			URI index= URIUtil.append(path, "index.html"); //$NON-NLS-1$	//TODO
 			URL indexURL = URIUtil.toURL(index);
-			URL packagelistURL = URIUtil.toURL(packagelist);
-			
-			boolean suc= checkURLConnection(indexURL) && checkURLConnection(packagelistURL);
+
+			boolean suc= checkURLConnection(indexURL);
 			if (suc) {
 				showConfirmValidationDialog(indexURL);
 			} else {
@@ -385,7 +358,7 @@ public class IndexConfigurationBlock {
 		}
 
 		private void showConfirmValidationDialog(URL url) {
-			String message= PreferencesMessages.IndexConfigurationBlock_ValidLocation_message;
+			String message= PreferencesMessages.IndexConfigurationBlock_ValidIndex_message;
 			String okLabel= PreferencesMessages.IndexConfigurationBlock_OK_label;
 			String openLabel= PreferencesMessages.IndexConfigurationBlock_Open_label;
 			MessageDialog dialog= new MessageDialog(fShell, fTitle, null, message, MessageDialog.INFORMATION, new String[] { okLabel, openLabel }, 0);
@@ -446,7 +419,7 @@ public class IndexConfigurationBlock {
 		} else if (field == fValidateURLButton || field == fValidateArchiveButton) {
 			EntryValidator validator= new EntryValidator();
 			BusyIndicator.showWhile(fShell.getDisplay(), validator);
-		} else if (field == fBrowseFolder) {
+		} else if (field == fBrowseFile) {
 			String url= chooseIndexFile();
 			if (url != null) {
 				fURLField.setText(url);
@@ -471,20 +444,18 @@ public class IndexConfigurationBlock {
 
 	private void statusChanged() {
 		IStatus status;
-		boolean isURL= fIsForSource || fURLRadioButton.isSelected();
+		boolean isURL= fURLRadioButton.isSelected();
 		if (isURL) {
 			status= fURLStatus;
 		} else {
 			status= StatusUtil.getMoreSevere(fArchiveStatus, fArchivePathStatus);
 		}
-		if (!fIsForSource) {
-			boolean canBrowseArchivePath= !isURL && fArchiveStatus.isOK() && fArchiveField.getText().length() > 0;
-			if (canBrowseArchivePath && fWorkspaceRadio.isSelected()) {
-				IResource resource= ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(fArchiveField.getText()));
-				canBrowseArchivePath= resource != null && resource.getLocation() != null;
-			}
-			fBrowseArchivePath.setEnabled(canBrowseArchivePath);
+		boolean canBrowseArchivePath= !isURL && fArchiveStatus.isOK() && fArchiveField.getText().length() > 0;
+		if (canBrowseArchivePath && fWorkspaceRadio.isSelected()) {
+			IResource resource= ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(fArchiveField.getText()));
+			canBrowseArchivePath= resource != null && resource.getLocation() != null;
 		}
+		fBrowseArchivePath.setEnabled(canBrowseArchivePath);
 		fContext.statusChanged(status);
 	}
 
@@ -751,7 +722,6 @@ public class IndexConfigurationBlock {
 
 	}
 
-
 	private URL getArchiveURL() throws MalformedURLException {
 		String jarLoc= fArchiveField.getText();
 		String innerPath= fArchivePathField.getText().trim();
@@ -780,7 +750,6 @@ public class IndexConfigurationBlock {
 		return new URL(buf.toString());
 	}
 
-
 	/**
 	 * An adapter for presenting a zip file in a tree viewer.
 	 */
@@ -802,7 +771,7 @@ public class IndexConfigurationBlock {
 				elem= null;
 				for (int k= 0; k < list.size(); k++) {
 					Object curr= list.get(k);
-					if (fProvider.isFolder(curr) && name.equals(fProvider.getLabel(curr))) {
+					if (name.equals(fProvider.getLabel(curr))) {
 						elem= curr;
 						break;
 					}
@@ -818,8 +787,8 @@ public class IndexConfigurationBlock {
 		}
 
 		/* non java-doc
-		  * @see ITreeContentProvider#getParent
-		  */
+		 * @see ITreeContentProvider#getParent
+		 */
 		public Object getParent(Object element) {
 			if (element.equals(fProvider.getRoot())) {
 				return null;
@@ -836,14 +805,7 @@ public class IndexConfigurationBlock {
 		 */
 		public boolean hasChildren(Object element) {
 			List<?> list= fProvider.getChildren(element);
-			if (list != null) {
-				for (int i= 0; i < list.size(); i++) {
-					if (fProvider.isFolder(list.get(i))) {
-						return true;
-					}
-				}
-			}
-			return false;
+			return list != null && list.size() > 0;
 		}
 
 		/* non java-doc
@@ -851,16 +813,10 @@ public class IndexConfigurationBlock {
 		 */
 		public Object[] getChildren(Object element) {
 			List<?> list= fProvider.getChildren(element);
-			ArrayList<Object> res= new ArrayList<Object>();
 			if (list != null) {
-				for (int i= 0; i < list.size(); i++) {
-					Object curr= list.get(i);
-					if (fProvider.isFolder(curr)) {
-						res.add(curr);
-					}
-				}
+				return list.toArray();
 			}
-			return res.toArray();
+			return new Object[0];
 		}
 
 		/* non java-doc
@@ -880,9 +836,11 @@ public class IndexConfigurationBlock {
 	private static class ZipDialogLabelProvider extends LabelProvider {
 
 		private final Image IMG_JAR=
-			JavaUI.getSharedImages().getImage(org.eclipse.jdt.ui.ISharedImages.IMG_OBJS_JAR);
+				JavaUI.getSharedImages().getImage(org.eclipse.jdt.ui.ISharedImages.IMG_OBJS_JAR);
 		private final Image IMG_FOLDER=
-			PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+				PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		private final Image IMG_FILE=
+				PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
 
 		private ZipFileStructureProvider fProvider;
 
@@ -894,8 +852,10 @@ public class IndexConfigurationBlock {
 		public Image getImage(Object element) {
 			if (element == fProvider.getRoot()) {
 				return IMG_JAR;
-			} else {
+			} else if (fProvider.isFolder(element)) {
 				return IMG_FOLDER;
+			} else {
+				return IMG_FILE;
 			}
 		}
 

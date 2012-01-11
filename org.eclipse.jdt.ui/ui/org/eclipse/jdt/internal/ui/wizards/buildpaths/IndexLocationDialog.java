@@ -38,8 +38,7 @@ public class IndexLocationDialog extends StatusDialog {
 	private IndexConfigurationBlock fIndexConfigurationBlock;
 
 	/**
-	 * Shows the UI for configuring an index location. Use {@link org.eclipse.jdt.ui.JavaUI} to
-	 * access and configure index locations.
+	 * Shows the UI for configuring an index location.
 	 * 
 	 * @param parent The parent shell for the dialog.
 	 * @param libraryName Name of of the library to which configured index location belongs.
@@ -54,8 +53,8 @@ public class IndexLocationDialog extends StatusDialog {
 			}
 		};
 
-		setTitle(Messages.format(NewWizardMessages.LibrariesWorkbookPage_JavadocPropertyDialog_title, libraryName));
-		fIndexConfigurationBlock= new IndexConfigurationBlock(parent, listener, initialURL, false);
+		setTitle(Messages.format(NewWizardMessages.LibrariesWorkbookPage_IndexPropertyDialog_title, libraryName));
+		fIndexConfigurationBlock= new IndexConfigurationBlock(parent, listener, initialURL);
 	}
 
 	/*
@@ -95,6 +94,6 @@ public class IndexLocationDialog extends StatusDialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(newShell, IJavaHelpContextIds.JAVADOC_PROPERTY_DIALOG);
+		PlatformUI.getWorkbench().getHelpSystem().setHelp(newShell, IJavaHelpContextIds.JAVADOC_PROPERTY_DIALOG); //TODO
 	}
 }

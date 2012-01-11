@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * Copyright (c) 2000, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,7 @@ public final class PreferencesMessages extends NLS {
 	public static String ImportOrganizeInputDialog_name_group_static_label;
 	public static String IndexConfigurationBlock_browse_archive_button;
 	public static String IndexConfigurationBlock_browse_archive_path_button;
-	public static String IndexConfigurationBlock_browse_folder_button;
+	public static String IndexConfigurationBlock_browse_file_button;
 	public static String IndexConfigurationBlock_browse_jarorzip_path_title;
 	public static String IndexConfigurationBlock_error_archive_not_found_in_workspace;
 	public static String IndexConfigurationBlock_error_archivepathnotabsolute;
@@ -104,32 +104,28 @@ public final class PreferencesMessages extends NLS {
 	public static String IndexConfigurationBlock_external_radio;
 	public static String IndexConfigurationBlock_IndexFileDialog_label;
 	public static String IndexConfigurationBlock_IndexFolderDialog_message;
-	public static String IndexConfigurationBlock_InvalidLocation_message;
+	public static String IndexConfigurationBlock_InvalidIndex_message;
 	public static String IndexConfigurationBlock_jar_path_label;
 	public static String IndexConfigurationBlock_location_in_jarorzip_message;
 	public static String IndexConfigurationBlock_location_jar_label;
-	public static String IndexConfigurationBlock_location_path_label;
+	public static String IndexConfigurationBlock_file_path_label;
 	public static String IndexConfigurationBlock_location_type_jar_label;
 	public static String IndexConfigurationBlock_location_type_path_label;
 	public static String IndexConfigurationBlock_MalformedURL_error;
 	public static String IndexConfigurationBlock_MessageDialog_title;
 	public static String IndexConfigurationBlock_OK_label;
 	public static String IndexConfigurationBlock_Open_label;
-	public static String IndexConfigurationBlock_UnableToValidateLocation_message;
+	public static String IndexConfigurationBlock_UnableToValidateIndex_message;
 	public static String IndexConfigurationBlock_validate_button;
-	public static String IndexConfigurationBlock_ValidLocation_message;
+	public static String IndexConfigurationBlock_ValidIndex_message;
 	public static String IndexConfigurationBlock_workspace_archive_selection_dialog_description;
 	public static String IndexConfigurationBlock_workspace_archive_selection_dialog_title;
 	public static String IndexConfigurationBlock_workspace_radio;
 	public static String IndexConfigurationBlock_zipImportSource_title;
-	public static String IndexConfigurationPropertyPage_invalid_container;
 	public static String IndexConfigurationPropertyPage_IsIncorrectElement_description;
-	public static String IndexConfigurationPropertyPage_IsJavaProject_description;
 	public static String IndexConfigurationPropertyPage_IsPackageFragmentRoot_description;
 	public static String IndexConfigurationPropertyPage_location_path;
 	public static String IndexConfigurationPropertyPage_locationPath_none;
-	public static String IndexConfigurationPropertyPage_not_supported;
-	public static String IndexConfigurationPropertyPage_read_only;
 	public static String JavaBasePreferencePage_description;
 	public static String JavaBasePreferencePage_doubleclick_action;
 	public static String JavaBasePreferencePage_doubleclick_gointo;
