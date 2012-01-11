@@ -813,10 +813,7 @@ public class IndexConfigurationBlock {
 		 */
 		public Object[] getChildren(Object element) {
 			List<?> list= fProvider.getChildren(element);
-			if (list != null) {
-				return list.toArray();
-			}
-			return new Object[0];
+			return list != null ? list.toArray() : null;
 		}
 
 		/* non java-doc

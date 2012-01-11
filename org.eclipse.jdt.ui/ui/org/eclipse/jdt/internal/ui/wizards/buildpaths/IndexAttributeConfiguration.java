@@ -124,6 +124,4 @@ public class IndexAttributeConfiguration extends ClasspathAttributeConfiguration
 		return attribute.getClasspathAttribute().getValue() != null;
 	}
 
-
-
 }
