@@ -619,7 +619,6 @@ public class IndexConfigurationBlock {
 			initPath= (new File(fURLResult.getFile())).getPath();
 		}
 		FileDialog dialog= new FileDialog(fShell);
-		dialog.setFilterExtensions(ArchiveFileFilter.JAR_ZIP_FILTER_EXTENSIONS);
 		dialog.setText(PreferencesMessages.IndexConfigurationBlock_IndexFileDialog_label);
 		dialog.setFilterPath(initPath);
 
