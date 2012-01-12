@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * Copyright (c) 2000, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -271,6 +271,7 @@ public interface IJavaHelpContextIds {
 	public static final String IMPORT_ORGANIZE_INPUT_DIALOG= PREFIX + "import_organize_input_dialog_context"; //$NON-NLS-1$
 	public static final String TODO_TASK_INPUT_DIALOG= PREFIX + "todo_task_input_dialog_context"; //$NON-NLS-1$
 	public static final String JAVADOC_PROPERTY_DIALOG= PREFIX + "javadoc_property_dialog_context"; //$NON-NLS-1$
+	public static final String INDEX_PROPERTY_DIALOG= PREFIX + "index_property_dialog_context"; //$NON-NLS-1$
 	public static final String NEW_CONTAINER_DIALOG= PREFIX + "new_container_dialog_context"; //$NON-NLS-1$
 	public static final String EXCLUSION_PATTERN_DIALOG= PREFIX + "exclusion_pattern_dialog_context"; //$NON-NLS-1$
 	public static final String ACCESS_RULES_DIALOG= PREFIX + "access_rules_dialog_context"; //$NON-NLS-1$
@@ -355,6 +356,7 @@ public interface IJavaHelpContextIds {
 	public static final String TEMPLATE_PREFERENCE_PAGE= PREFIX + "template_preference_page_context"; //$NON-NLS-1$
 	public static final String NEW_JAVA_PROJECT_PREFERENCE_PAGE= PREFIX + "new_java_project_preference_page_context"; //$NON-NLS-1$
 	public static final String JAVADOC_CONFIGURATION_PROPERTY_PAGE= PREFIX + "javadoc_configuration_property_page_context"; //$NON-NLS-1$
+	public static final String INDEX_CONFIGURATION_PROPERTY_PAGE= PREFIX + "index_configuration_property_page_context"; //$NON-NLS-1$
 	public static final String JAVA_ELEMENT_INFO_PAGE= PREFIX + "java_element_info_page_context"; //$NON-NLS-1$
 
 	// Wizard pages
