@@ -112,19 +112,19 @@ public final class BuildPathDialogAccess {
 	}
 
 	/**
-	 * Shows the UI for configuring a javadoc location. <code>null</code> is returned
-	 * if the user cancels the dialog. If OK is pressed, an array of length 1 containing the configured URL is
-	 * returned. Note that the configured URL can be <code>null</code> when the user
-	 * wishes to have no URL location specified. The dialog does not apply any changes.
-	 * Use {@link org.eclipse.jdt.ui.JavaUI} to access and configure
-	 * Javadoc locations.
-	 *
+	 * Shows the UI for configuring a javadoc location. <code>null</code> is returned if the user
+	 * cancels the dialog. If OK is pressed, an array of length 1 containing the configured URL is
+	 * returned. Note that the configured URL can be <code>null</code> when the user wishes to have
+	 * no URL location specified. The dialog does not apply any changes. Use
+	 * {@link org.eclipse.jdt.ui.JavaUI} to access and configure Javadoc locations.
+	 * 
 	 * @param shell The parent shell for the dialog.
 	 * @param libraryName Name of of the library to which configured javadoc location belongs.
 	 * @param initialURL The initial URL or <code>null</code>.
 	 * @return Returns an array of size 1 that contains the resulting javadoc location or
-	 * <code>null</code> if the dialog has been canceled. Note that the configured URL can be <code>null</code> when the user
-	 * wishes to have no URL location specified.
+	 *         <code>null</code> if the dialog has been canceled. Note that the configured URL can
+	 *         be <code>null</code> when the user wishes to have no URL location specified.
+	 * @since 3.8
 	 */
 	public static URL[] configureJavadocLocation(Shell shell, String libraryName, URL initialURL) {
 		if (libraryName == null) {
@@ -151,6 +151,7 @@ public final class BuildPathDialogAccess {
 	 * @return Returns an array of size 1 that contains the resulting index location or
 	 *         <code>null</code> if the dialog has been canceled. Note that the configured URL can
 	 *         be <code>null</code> when the user wishes to have no URL location specified.
+	 * @since 3.8
 	 */
 	public static URL[] configureIndexLocation(Shell shell, String libraryName, URL initialURL) {
 		if (libraryName == null) {
