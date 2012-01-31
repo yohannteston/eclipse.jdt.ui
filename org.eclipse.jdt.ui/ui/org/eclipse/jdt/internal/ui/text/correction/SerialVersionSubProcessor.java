@@ -23,6 +23,7 @@ import org.eclipse.jdt.internal.corext.fix.PotentialProgrammingProblemsFix;
 
 import org.eclipse.jdt.ui.cleanup.CleanUpOptions;
 import org.eclipse.jdt.ui.cleanup.ICleanUp;
+import org.eclipse.jdt.ui.text.correction.proposals.ICommandAccess;
 import org.eclipse.jdt.ui.text.java.IInvocationContext;
 import org.eclipse.jdt.ui.text.java.IProblemLocation;
 

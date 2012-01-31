@@ -105,6 +105,7 @@ Export-Package: org.eclipse.jdt.internal.corext;x-friends:="org.eclipse.jdt.juni
  org.eclipse.jdt.ui.refactoring,
  org.eclipse.jdt.ui.search,
  org.eclipse.jdt.ui.text,
+ org.eclipse.jdt.ui.text.correction.proposals,
  org.eclipse.jdt.ui.text.folding,
  org.eclipse.jdt.ui.text.java,
  org.eclipse.jdt.ui.text.java.hover,

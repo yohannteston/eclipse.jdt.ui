@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * Copyright (c) 2000, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.jdt.internal.ui.text.correction.proposals;
+package org.eclipse.jdt.ui.text.correction.proposals;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -52,16 +52,15 @@ import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.text.correction.CorrectionCommandHandler;
 import org.eclipse.jdt.internal.ui.text.correction.CorrectionMessages;
-import org.eclipse.jdt.internal.ui.text.correction.ICommandAccess;
 import org.eclipse.jdt.internal.ui.util.ExceptionHandler;
 
 
 /**
- * Implementation of a Java completion proposal to be used for quick fix and quick assist
- * proposals that invoke a {@link Change}. The proposal offers a proposal information but no context
+ * Implementation of a Java completion proposal to be used for quick fix and quick assist proposals
+ * that invoke a {@link Change}. The proposal offers a proposal information but no context
  * information.
- *
- * @since 3.2
+ * 
+ * @since 3.8
  */
 public class ChangeCorrectionProposal implements IJavaCompletionProposal, ICommandAccess, ICompletionProposalExtension5, ICompletionProposalExtension6 {
 
@@ -218,7 +217,6 @@ public class ChangeCorrectionProposal implements IJavaCompletionProposal, IComma
 
 	/*
 	 * @see org.eclipse.jface.text.contentassist.ICompletionProposalExtension5#getAdditionalProposalInfo(org.eclipse.core.runtime.IProgressMonitor)
-	 * @since 3.5
 	 */
 	public Object getAdditionalProposalInfo(IProgressMonitor monitor) {
 		StringBuffer buf= new StringBuffer();
@@ -429,7 +427,5 @@ public class ChangeCorrectionProposal implements IJavaCompletionProposal, IComma
 	public void setCommandId(String commandId) {
 		fCommandId= commandId;
 	}
-
-
 
 }

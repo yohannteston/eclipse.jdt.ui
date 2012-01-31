@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * Copyright (c) 2000, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.jdt.internal.ui.text.correction.proposals;
+package org.eclipse.jdt.ui.text.correction.proposals;
 
 import org.eclipse.swt.graphics.Image;
 
@@ -31,12 +31,11 @@ import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.JavaUIStatus;
 
 /**
- * A proposal for quick fixes and quick assists that works on a AST rewriter.
- * Either a rewriter is directly passed in the constructor or method {@link #getRewrite()}
- * is overridden to provide the AST rewriter that is evaluated to the document when the
- * proposal is applied.
- *
- * @since 3.2
+ * A proposal for quick fixes and quick assists that works on a AST rewriter. Either a rewriter is
+ * directly passed in the constructor or method {@link #getRewrite()} is overridden to provide the
+ * AST rewriter that is evaluated to the document when the proposal is applied.
+ * 
+ * @since 3.8
  */
 public class ASTRewriteCorrectionProposal extends CUCorrectionProposal {
 

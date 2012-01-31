@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * Copyright (c) 2000, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.jdt.internal.ui.text.correction.proposals;
+package org.eclipse.jdt.ui.text.correction.proposals;
 
 import org.eclipse.swt.graphics.Image;
 
@@ -47,17 +47,19 @@ import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.javaeditor.EditorUtility;
 import org.eclipse.jdt.internal.ui.text.correction.CorrectionMessages;
+import org.eclipse.jdt.internal.ui.text.correction.proposals.EditAnnotator;
 import org.eclipse.jdt.internal.ui.util.ExceptionHandler;
 
 /**
- * A proposal for quick fixes and quick assist that work on a single compilation unit.
- * Either a {@link TextChange text change} is directly passed in the constructor or method
- * {@link #addEdits(IDocument, TextEdit)} is overridden to provide the text edits that are
- * applied to the document when the proposal is evaluated.
+ * A proposal for quick fixes and quick assist that work on a single compilation unit. Either a
+ * {@link TextChange text change} is directly passed in the constructor or method
+ * {@link #addEdits(IDocument, TextEdit)} is overridden to provide the text edits that are applied
+ * to the document when the proposal is evaluated.
  * <p>
  * The proposal takes care of the preview of the changes as proposal information.
  * </p>
- * @since 3.2
+ * 
+ * @since 3.8
  */
 public class CUCorrectionProposal extends ChangeCorrectionProposal  {
 
