@@ -74,7 +74,9 @@ public class ASTRewriteCorrectionProposal extends CUCorrectionProposal {
 
 	/**
 	 * Returns the import rewriter used for this compilation unit. <code>
+	 * 
 	 * @return the import rewriter or <code>null</code> if no import rewriter is set
+	 * @nooverride This method is not intended to be re-implemented or extended by clients.
 	 */
 	public ImportRewrite getImportRewrite() {
 		return fImportRewrite;
@@ -82,7 +84,9 @@ public class ASTRewriteCorrectionProposal extends CUCorrectionProposal {
 
 	/**
 	 * Sets the import rewriter used for this compilation unit.
+	 * 
 	 * @param rewrite the import rewriter
+	 * @nooverride This method is not intended to be re-implemented or extended by clients.
 	 */
 	public void setImportRewrite(ImportRewrite rewrite) {
 		fImportRewrite= rewrite;
@@ -90,8 +94,10 @@ public class ASTRewriteCorrectionProposal extends CUCorrectionProposal {
 
 	/**
 	 * Sets the import rewriter used for this compilation unit.
+	 * 
 	 * @param astRoot the AST for the current CU
 	 * @return returns the create import rewriter
+	 * @nooverride This method is not intended to be re-implemented or extended by clients.
 	 */
 	public ImportRewrite createImportRewrite(CompilationUnit astRoot) {
 		fImportRewrite= StubUtility.createImportRewrite(astRoot, true);
